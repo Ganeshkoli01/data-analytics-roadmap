@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>6-Month Data Analytics Roadmap — CSE Student Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #0B0F1A;
+  --bg2: #111827;
+  --bg3: #1A2235;
+  --border: #1F2D45;
+  --text: #E8EDF5;
+  --text2: #8A9BB5;
+  --text3: #5A6E8A;
+  --accent: #3B82F6;
+  --accent2: #10B981;
+  --accent3: #F59E0B;
+  --accent4: #8B5CF6;
+  --accent5: #EF4444;
+  --accent6: #06B6D4;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Inter', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,15,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+.nav-logo{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:0.05em;}
+.nav-links{display:flex;gap:4px;}
+.nav-link{padding:5px 12px;border-radius:6px;font-size:12px;color:var(--text2);cursor:pointer;border:none;background:transparent;transition:all 0.15s;}
+.nav-link:hover,.nav-link.active{background:var(--border);color:var(--text);}
+.nav-progress{width:100%;height:2px;background:var(--border);position:absolute;bottom:0;left:0;}
+.nav-progress-fill{height:100%;background:var(--accent);transition:width 0.3s;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.3;}
+.hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(59,130,246,0.15) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{position:relative;max-width:780px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--accent);font-family:var(--mono);margin-bottom:2rem;}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+h1{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1.25rem;}
+h1 em{font-style:normal;color:var(--accent);}
+.hero-sub{font-size:17px;color:var(--text2);max-width:560px;margin:0 auto 2.5rem;line-height:1.7;}
+.hero-stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;}
+.stat{text-align:center;}
+.stat-val{font-size:2rem;font-weight:700;color:var(--text);}
+.stat-lbl{font-size:12px;color:var(--text3);font-family:var(--mono);}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border:none;padding:13px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.cta-btn:hover{background:#2563EB;transform:translateY(-1px);}
+.scroll-hint{margin-top:3rem;font-size:12px;color:var(--text3);font-family:var(--mono);animation:bounce 2s infinite;}
+
+/* OVERVIEW */
+.section{padding:5rem 2rem;}
+.container{max-width:1100px;margin:0 auto;}
+.section-label{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem;}
+.section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:0.75rem;}
+.section-sub{font-size:15px;color:var(--text2);max-width:600px;line-height:1.7;}
+
+/* MONTH CARDS OVERVIEW */
+.months-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:3rem;}
+.month-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;}
+.month-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.month-card:nth-child(1)::before{background:var(--accent);}
+.month-card:nth-child(2)::before{background:var(--accent2);}
+.month-card:nth-child(3)::before{background:var(--accent3);}
+.month-card:nth-child(4)::before{background:var(--accent4);}
+.month-card:nth-child(5)::before{background:var(--accent5);}
+.month-card:nth-child(6)::before{background:var(--accent6);}
+.month-card:hover{border-color:var(--accent);transform:translateY(-2px);background:var(--bg3);}
+.month-num{font-family:var(--mono);font-size:11px;color:var(--text3);margin-bottom:8px;}
+.month-title{font-size:16px;font-weight:600;margin-bottom:6px;}
+.month-goal{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:1rem;}
+.month-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{font-size:11px;padding:3px 9px;border-radius:4px;background:var(--border);color:var(--text2);font-family:var(--mono);}
+.month-arrow{position:absolute;bottom:1.5rem;right:1.5rem;font-size:18px;color:var(--text3);transition:all 0.2s;}
+.month-card:hover .month-arrow{color:var(--accent);transform:translateX(3px);}
+
+/* DETAILED SECTIONS */
+.month-section{padding:4rem 2rem;border-top:1px solid var(--border);}
+.month-header{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:3rem;flex-wrap:wrap;}
+.month-badge-big{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;flex-shrink:0;}
+.month-header-text h2{font-size:1.8rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px;}
+.month-header-text p{color:var(--text2);font-size:14px;}
+
+/* WEEKS */
+.weeks-tabs{display:flex;gap:8px;margin-bottom:2rem;flex-wrap:wrap;}
+.week-tab{padding:7px 16px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text2);font-size:13px;cursor:pointer;transition:all 0.15s;font-family:var(--sans);}
+.week-tab:hover{border-color:var(--text3);color:var(--text);}
+.week-tab.active{background:var(--border);color:var(--text);border-color:transparent;}
+.week-panel{display:none;}
+.week-panel.visible{display:block;}
+.week-info{margin-bottom:1.5rem;}
+.week-name{font-size:1.1rem;font-weight:600;margin-bottom:4px;}
+.week-desc{font-size:13px;color:var(--text2);}
+
+/* DAYS */
+.day-row{border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden;}
+.day-head{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg2);cursor:pointer;transition:background 0.15s;}
+.day-head:hover{background:var(--bg3);}
+.day-name{font-size:13px;font-weight:500;min-width:96px;}
+.day-type-badge{font-size:10px;padding:3px 9px;border-radius:4px;font-weight:600;letter-spacing:0.03em;font-family:var(--mono);}
+.day-preview{font-size:12px;color:var(--text2);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.day-chevron{color:var(--text3);font-size:14px;margin-left:auto;transition:transform 0.2s;flex-shrink:0;}
+.day-chevron.open{transform:rotate(180deg);}
+.day-body{display:none;padding:14px 16px;border-top:1px solid var(--border);background:rgba(17,24,39,0.5);}
+.day-body.open{display:block;}
+.task-item{display:flex;align-items:flex-start;gap:10px;padding:8px 6px;border-bottom:1px solid rgba(31,45,69,0.5);font-size:13px;color:var(--text);cursor:pointer;border-radius:4px;transition:background 0.12s;user-select:none;}
+.task-item:last-child{border-bottom:none;}
+.task-item:hover{background:rgba(59,130,246,0.05);}
+.task-item.task-checked{color:var(--text3);}
+.task-item.task-checked .task-text{text-decoration:line-through;}
+/* custom checkbox */
+.task-cb{width:17px;height:17px;border-radius:4px;border:1.5px solid var(--text3);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all 0.15s;color:transparent;}
+.task-item.task-checked .task-cb{background:var(--accent2);border-color:var(--accent2);color:#fff;}
+.task-text{flex:1;line-height:1.5;}
+.tip{background:rgba(59,130,246,0.07);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:10px 14px;margin-top:12px;font-size:12px;color:var(--text2);line-height:1.6;}
+.tip strong{color:var(--accent);font-size:10px;display:block;font-family:var(--mono);letter-spacing:0.08em;margin-bottom:4px;}
+
+/* PROJECT BOX */
+.project-box{background:rgba(16,185,129,0.07);border:1px solid rgba(16,185,129,0.2);border-radius:8px;padding:14px 16px;margin-top:1.5rem;}
+.project-label{font-size:11px;font-family:var(--mono);color:var(--accent2);margin-bottom:6px;letter-spacing:0.08em;}
+.project-text{font-size:13px;color:var(--text);line-height:1.6;}
+
+/* RESOURCES */
+.resources-box{margin-top:1.5rem;}
+.resources-label{font-size:11px;font-family:var(--mono);color:var(--text3);letter-spacing:0.08em;margin-bottom:8px;}
+.resource-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);padding:5px 0;}
+.resource-dot{width:4px;height:4px;border-radius:50%;background:var(--text3);flex-shrink:0;}
+
+/* CHECKLIST */
+.checklist-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2rem;margin-top:3rem;}
+.checklist-title{font-size:1rem;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.checklist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;}
+.check-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text2);padding:8px 12px;background:var(--bg3);border-radius:6px;}
+.check-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
+
+/* FOOTER */
+footer{padding:4rem 2rem;border-top:1px solid var(--border);text-align:center;}
+.footer-inner{max-width:600px;margin:0 auto;}
+.footer-title{font-size:1.5rem;font-weight:700;margin-bottom:0.75rem;}
+.footer-sub{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:2rem;}
+.footer-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:2rem;}
+.footer-tag{font-family:var(--mono);font-size:11px;padding:4px 12px;border:1px solid var(--border);border-radius:4px;color:var(--text3);}
+
+/* TIMELINE BAR */
+.timeline{display:flex;gap:0;margin:3rem 0;overflow-x:auto;padding-bottom:8px;}
+.tl-item{flex:1;min-width:140px;padding:12px 16px;border-top:2px solid var(--border);position:relative;cursor:pointer;transition:all 0.15s;}
+.tl-item.active{border-top-color:var(--accent);}
+.tl-item:nth-child(2).active{border-top-color:var(--accent2);}
+.tl-item:nth-child(3).active{border-top-color:var(--accent3);}
+.tl-item:nth-child(4).active{border-top-color:var(--accent4);}
+.tl-item:nth-child(5).active{border-top-color:var(--accent5);}
+.tl-item:nth-child(6).active{border-top-color:var(--accent6);}
+.tl-month{font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:3px;}
+.tl-title{font-size:12px;font-weight:500;color:var(--text2);}
+.tl-item.active .tl-title{color:var(--text);}
+
+/* ANIMATIONS */
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.fade-up{opacity:0;animation:fadeUp 0.5s ease forwards;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+
+/* START DATE BANNER */
+.start-banner{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 20px;margin:2rem auto 0;max-width:1100px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.start-banner label{font-size:13px;color:var(--text2);font-family:var(--mono);}
+.start-banner input[type=date]{background:var(--bg3);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;padding:6px 12px;font-family:var(--mono);cursor:pointer;outline:none;}
+.start-banner input[type=date]:focus{border-color:var(--accent);}
+.start-banner .hint{font-size:12px;color:var(--text3);margin-left:auto;}
+.progress-summary{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--text2);font-family:var(--mono);}
+.progress-summary strong{color:var(--accent2);}
+
+/* WEEK COMPLETED STATES */
+.week-tab.done{border-color:rgba(16,185,129,0.4);color:var(--accent2);position:relative;}
+.week-tab.done::after{content:'✓';margin-left:6px;font-size:11px;color:var(--accent2);}
+.week-tab.done.active{background:rgba(16,185,129,0.12);}
+
+.week-panel.completed .week-done-banner{display:flex;}
+.week-done-banner{display:none;align-items:center;gap:12px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:8px;padding:12px 16px;margin-bottom:1.25rem;}
+.week-done-icon{width:32px;height:32px;border-radius:50%;background:rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.week-done-text{font-size:13px;color:var(--accent2);font-weight:500;}
+.week-done-sub{font-size:12px;color:var(--text3);margin-top:2px;}
+
+/* COMPLETED DAY ROW */
+.day-row.day-done{opacity:0.55;}
+.day-row.day-done .day-head{cursor:default;}
+.day-row.day-done .day-name{text-decoration:line-through;color:var(--text3);}
+.day-row.day-done .day-preview{text-decoration:line-through;}
+.day-row.day-done .day-done-check{margin-left:auto;color:var(--accent2);font-size:15px;flex-shrink:0;}
+.day-row.day-done .day-chevron{display:none;}
+/* day tasks all checked — green accent on header */
+.day-row.tasks-all-done .day-head{background:rgba(16,185,129,0.07);border-left:3px solid var(--accent2);}
+.day-row.tasks-all-done .day-name{color:var(--accent2);}
+.day-row.tasks-all-done .day-done-check{display:inline !important;margin-left:auto;color:var(--accent2);font-size:15px;flex-shrink:0;}
+.day-row.tasks-all-done .day-chevron{color:var(--accent2);}
+/* day progress pip row */
+.day-task-progress{display:flex;align-items:center;gap:6px;padding:4px 16px 6px;font-size:11px;color:var(--text3);font-family:var(--mono);}
+.day-task-pips{display:flex;gap:3px;}
+.task-pip{width:8px;height:8px;border-radius:2px;background:var(--border);transition:background 0.2s;}
+.task-pip.done{background:var(--accent2);}
+
+/* MONTH CARD COMPLETED */
+.month-card.month-done{border-color:rgba(16,185,129,0.3);}
+.month-card.month-done .month-done-badge{display:inline-flex;}
+.month-done-badge{display:none;align-items:center;gap:5px;font-size:11px;color:var(--accent2);font-family:var(--mono);margin-top:10px;background:rgba(16,185,129,0.1);padding:3px 10px;border-radius:4px;}
+
+/* OVERALL PROGRESS BAR */
+.overall-progress{margin-top:1rem;}
+.overall-progress-label{font-size:11px;color:var(--text3);font-family:var(--mono);margin-bottom:6px;display:flex;justify-content:space-between;}
+.overall-progress-track{height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+.overall-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width 0.5s ease;}
+
+/* MOBILE */
+@media(max-width:640px){
+  .nav-links{display:none;}
+  h1{font-size:2rem;}
+  .hero-stats{gap:1.5rem;}
+  .month-section{padding:3rem 1rem;}
+  .section{padding:3rem 1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">DA_ROADMAP.cse</span>
+    <div class="nav-links" id="navLinks"></div>
+  </div>
+  <div class="nav-progress"><div class="nav-progress-fill" id="progressFill" style="width:0%"></div></div>
+</nav>
+
+<!-- START DATE BANNER -->
+<div style="padding:72px 2rem 0;">
+  <div class="start-banner" id="startBanner">
+    <label for="startDate">📅 When did you start this roadmap?</label>
+    <input type="date" id="startDate" />
+    <div class="progress-summary" id="progressSummary" style="display:none">
+      Weeks done: <strong id="weeksCompletedCount">0</strong> / 24 &nbsp;·&nbsp; <span id="currentWeekLabel">—</span>
+    </div>
+    <span class="hint" id="startHint">Set your start date to auto-track completed weeks</span>
+    <div class="overall-progress" id="overallProgressBar" style="display:none;width:100%;margin-top:8px;">
+      <div class="overall-progress-label"><span>Overall progress</span><span id="overallPct">0%</span></div>
+      <div class="overall-progress-track"><div class="overall-progress-fill" id="overallFill" style="width:0%"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span></span> CSE Student · Data Analytics Domain</div>
+    <h1>Your <em>6-Month</em> Path to Data Analyst</h1>
+    <p class="hero-sub">A complete, day-by-day roadmap — from Python basics to job-ready portfolio. Built for CSE students in India.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-val">6</div><div class="stat-lbl">months</div></div>
+      <div class="stat"><div class="stat-val">24</div><div class="stat-lbl">weeks</div></div>
+      <div class="stat"><div class="stat-val">12+</div><div class="stat-lbl">projects</div></div>
+      <div class="stat"><div class="stat-val">168</div><div class="stat-lbl">daily tasks</div></div>
+    </div>
+    <a href="#overview" class="cta-btn">Start the Roadmap ↓</a>
+    <div class="scroll-hint">scroll to explore</div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section" id="overview">
+  <div class="container">
+    <div class="section-label">The Plan</div>
+    <h2 class="section-title">6 months. 6 skill areas.</h2>
+    <p class="section-sub">Each month builds on the last — from Python fundamentals to a job-ready portfolio with real projects, a certificate, and interview prep.</p>
+    <div class="months-grid" id="monthsGrid"></div>
+  </div>
+</section>
+
+<!-- MONTH DETAIL SECTIONS -->
+<div id="monthSections"></div>
+
+<!-- FINAL CHECKLIST -->
+<section class="section" id="checklist">
+  <div class="container">
+    <div class="section-label">End Goal</div>
+    <h2 class="section-title">What you have after 6 months</h2>
+    <p class="section-sub">If you follow this roadmap consistently, here is your portfolio by the end of Month 6.</p>
+    <div class="checklist-section">
+      <div class="checklist-title">✦ Job-Ready Checklist</div>
+      <div class="checklist-grid">
+        <div class="check-item"><span class="check-icon">⬡</span>12+ GitHub projects with proper READMEs</div>
+        <div class="check-item"><span class="check-icon">⬡</span>Google Data Analytics Certificate</div>
+        <div class="check-item"><span class="check-icon">⬡</span>Optimized LinkedIn with 3+ posts</div>
+        <div class="check-item"><span class="check-icon">⬡</span>ATS-friendly data analyst resume</div>
+        <div class="check-item"><span class="check-icon">⬡</span>Public Kaggle notebook with upvotes</div>
+        <div class="check-item"><span class="check-icon">⬡</span>Power BI dashboard in portfolio</div>
+        <div class="check-item"><span class="check-icon">⬡</span>50+ SQL & Python interview Qs practiced</div>
+        <div class="check-item"><span class="check-icon">⬡</span>10+ job applications submitted</div>
+        <div class="check-item"><span class="check-icon">⬡</span>End-to-end ML pipeline on Kaggle</div>
+        <div class="check-item"><span class="check-icon">⬡</span>Business KPIs & case study thinking</div>
+        <div class="check-item"><span class="check-icon">⬡</span>Full EDA template notebook</div>
+        <div class="check-item"><span class="check-icon">⬡</span>Referral outreach to 5+ alumni</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-title">Stay consistent. That's it.</div>
+    <p class="footer-sub">Most students who fail don't lack talent — they lack consistency. 2 hours a day for 6 months compounds into a career. One project at a time.</p>
+    <div class="footer-tags">
+      <span class="footer-tag">Python</span>
+      <span class="footer-tag">SQL</span>
+      <span class="footer-tag">Pandas</span>
+      <span class="footer-tag">Power BI</span>
+      <span class="footer-tag">Matplotlib</span>
+      <span class="footer-tag">scikit-learn</span>
+      <span class="footer-tag">Kaggle</span>
+      <span class="footer-tag">GitHub</span>
+      <span class="footer-tag">Excel</span>
+      <span class="footer-tag">Statistics</span>
+    </div>
+    <p style="font-size:12px;color:var(--text3);font-family:var(--mono);">built for CSE students · Kolhapur → anywhere</p>
+  </div>
+</footer>
+
+<script>
+const ACCENT = ['#3B82F6','#10B981','#F59E0B','#8B5CF6','#EF4444','#06B6D4'];
+const ACCENT_BG = ['rgba(59,130,246,0.12)','rgba(16,185,129,0.12)','rgba(245,158,11,0.12)','rgba(139,92,246,0.12)','rgba(239,68,68,0.12)','rgba(6,182,212,0.12)'];
+
+const TYPE_STYLE = {
+  Learn:   {bg:'rgba(59,130,246,0.15)',  color:'#60A5FA'},
+  Practice:{bg:'rgba(16,185,129,0.15)', color:'#34D399'},
+  Build:   {bg:'rgba(245,158,11,0.15)', color:'#FCD34D'},
+  Review:  {bg:'rgba(139,92,246,0.15)', color:'#A78BFA'},
+  Apply:   {bg:'rgba(6,182,212,0.15)',  color:'#22D3EE'},
+  Rest:    {bg:'rgba(107,114,128,0.15)' ,color:'#9CA3AF'},
+};
+
+const data = [
+  {
+    id:'m1', label:'Month 1', title:'Python & Statistics Foundation',
+    goal:'Get comfortable with Python for data and core math concepts',
+    tags:['Python','NumPy','Pandas','Statistics','Git'],
+    project:'Analyze a CSV dataset (IPL or COVID data) using Pandas — clean, summarize, and describe it.',
+    resources:['CS50P – Python (Harvard, free)','Kaggle Learn – Python & Pandas','StatQuest – Stats basics (YouTube)'],
+    weeks:[
+      {label:'Week 1',name:'Python environment & core syntax',desc:'Set up tools, write your first Python scripts, understand data types',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Install Python, VS Code, Jupyter',tasks:['Install Python 3.x, VS Code, and Jupyter Notebook','Run your first .py file and your first notebook cell','Watch CS50P Lecture 0 (Functions, Variables)'],tip:'Spend time on setup — a working environment saves hours later.'},
+        {name:'Tuesday',type:'Learn',preview:'Variables, data types, print, input',tasks:['Practice: int, float, str, bool — type conversion','Write 5 small scripts using print() and input()','Kaggle Learn – Python Lesson 1 & 2'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'if-else, loops (for, while)',tasks:['Write 10 programs using if-else conditions','Master for loops and while loops with examples','HackerRank – Python Easy challenges (3 problems)'],tip:"Don't skip HackerRank — practicing problems every day compounds fast."},
+        {name:'Thursday',type:'Practice',preview:'Functions & scope',tasks:['Write 5 reusable functions (area, grade calc, BMI etc.)','Understand local vs global scope','Kaggle Learn – Python Lesson 3 (Functions)'],tip:null},
+        {name:'Friday',type:'Practice',preview:'Lists, tuples, dictionaries',tasks:['Create, slice, modify lists and nested lists','Build a marks dictionary for 5 students','Practice: list comprehensions and dict iteration'],tip:null},
+        {name:'Saturday',type:'Build',preview:'Mini project: grade calculator',tasks:['Build a student grade calculator using functions + dict','Create your GitHub account and push your first repo','Write a proper README.md for the project'],tip:'GitHub from Day 1 builds a commit history that impresses recruiters.'},
+        {name:'Sunday',type:'Rest',preview:'Light review only',tasks:['Re-read your own code from the week — add comments','Optional: Watch 1 StatQuest video (descriptive stats intro)'],tip:null},
+       ]},
+      {label:'Week 2',name:'NumPy & Pandas foundations',desc:'Work with arrays and DataFrames — the backbone of data analysis',
+       days:[
+        {name:'Monday',type:'Learn',preview:'NumPy arrays & operations',tasks:['Install NumPy, create 1D and 2D arrays','Array arithmetic: add, subtract, multiply, dot product','Kaggle Learn – NumPy tutorial (w3resource exercises)'],tip:'NumPy is everywhere in data science — invest time here.'},
+        {name:'Tuesday',type:'Learn',preview:'Pandas Series & DataFrame basics',tasks:['Create Series and DataFrame from lists and dicts','Use head(), tail(), info(), describe() on a CSV','Download IPL or Student Performance dataset from Kaggle'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'Selecting & filtering data',tasks:['Practice loc[], iloc[], boolean filtering','Sort data by column, find top 5 rows','Answer 5 questions from your IPL dataset'],tip:'Think like an analyst: "Who scored the most runs in 2020?" — answer it with code.'},
+        {name:'Thursday',type:'Practice',preview:'GroupBy, aggregation, merge',tasks:['groupby() with sum, mean, count on real data','Merge two DataFrames (inner, left, right join)','Kaggle Learn – Pandas Lesson 3 & 4'],tip:null},
+        {name:'Friday',type:'Practice',preview:'Handling missing values',tasks:["Find nulls with isnull().sum() on your dataset",'Fill or drop missing values — understand when to do each','Clean a messy CSV (Titanic dataset works great)'],tip:null},
+        {name:'Saturday',type:'Build',preview:'Mini EDA on IPL dataset',tasks:['Load IPL CSV, clean it, answer 10 business questions','Export findings to a summary text file or notebook','Push notebook to GitHub'],tip:null},
+        {name:'Sunday',type:'Review',preview:'Review & consolidate',tasks:['Redo 3 exercises from the week without looking at notes','Write a 1-page summary of what Pandas can do'],tip:'Teaching concepts back to yourself is the fastest way to retain them.'},
+       ]},
+      {label:'Week 3',name:'Statistics for data analysis',desc:'Understand the math behind data — mean, std, distributions, correlation',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Descriptive statistics',tasks:['Mean, median, mode — calculate manually + with Pandas','Variance and standard deviation — what they really mean','StatQuest: "Statistics Fundamentals" playlist (2 videos)'],tip:'Always visualize distributions before calculating stats — your intuition improves fast.'},
+        {name:'Tuesday',type:'Learn',preview:'Probability basics',tasks:['Understand probability, events, and sample space','StatQuest: "Probability" and "Bayes Theorem" videos','Solve 5 probability problems by hand'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'Normal distribution & z-scores',tasks:['What is a normal distribution? Plot one with matplotlib','Calculate z-scores on your dataset','Use scipy.stats to verify your calculations'],tip:null},
+        {name:'Thursday',type:'Practice',preview:'Correlation & covariance',tasks:['Pearson correlation — calculate with Pandas corr()','Plot a correlation heatmap (seaborn is fine here)','Apply correlation to IPL data — what affects win rate?'],tip:'Correlation ≠ causation. Always question what you find in the data.'},
+        {name:'Friday',type:'Practice',preview:'Outlier detection',tasks:['Detect outliers using IQR method and z-score method','Plot boxplots to visualize outliers','Decide: remove or keep outliers? Justify with reasoning'],tip:null},
+        {name:'Saturday',type:'Build',preview:'Statistical report on real data',tasks:['Pick any Kaggle dataset, compute full descriptive stats','Write a short analysis: 5 insights from the data','Add this to your GitHub as a Jupyter notebook'],tip:null},
+        {name:'Sunday',type:'Review',preview:'Stats quiz yourself',tasks:['Quiz: define mean, median, std, z-score, correlation from memory','Watch 1 StatQuest video on a topic you found confusing'],tip:null},
+       ]},
+      {label:'Week 4',name:'Git, final project & review',desc:'Build your capstone, polish GitHub, and solidify everything from the month',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Git & GitHub workflow',tasks:['Learn: git init, add, commit, push, pull, clone','Create branches and understand git workflow','Set up your data analytics GitHub profile properly'],tip:'A clean GitHub profile with consistent commits is your silent resume.'},
+        {name:'Tuesday',type:'Learn',preview:'Intro to Matplotlib basics',tasks:['Line chart, bar chart, scatter plot with Matplotlib','Customize: labels, titles, colors, figure size','Kaggle Learn – Data Visualization intro'],tip:"Visualization is Month 3's deep focus — just get comfortable with basics now."},
+        {name:'Wednesday',type:'Build',preview:'Start capstone project',tasks:['Choose dataset: COVID India, IPL, Student Performance, or Zomato','Define 8–10 questions you want to answer from the data','Load, inspect, and clean the data in a Jupyter notebook'],tip:"Pick data you're curious about — enthusiasm shows in your work."},
+        {name:'Thursday',type:'Build',preview:'Deep analysis on capstone',tasks:['Compute all relevant stats: mean, std, correlations','GroupBy and segment data by key categories','Create 4–5 plots that clearly show trends'],tip:null},
+        {name:'Friday',type:'Build',preview:'Write up insights & push to GitHub',tasks:['Write a clear markdown summary: what you found, why it matters','Push full notebook + README to GitHub','Review notebook as if you\'re a hiring manager seeing it'],tip:null},
+        {name:'Saturday',type:'Review',preview:'Month 1 full review',tasks:['Revise: Python, NumPy, Pandas, Stats — make a cheat sheet','Solve 5 HackerRank Python problems without help','Ensure your GitHub has at least 3 notebooks/projects'],tip:'Your cheat sheet will become your best reference for Month 2.'},
+        {name:'Sunday',type:'Rest',preview:'Plan Month 2 & rest',tasks:['Read through the Month 2 roadmap (SQL & data wrangling)','Rest — you\'ve covered a lot. Consistency beats intensity.'],tip:null},
+       ]},
+    ]
+  },
+  {
+    id:'m2', label:'Month 2', title:'Data Wrangling & SQL',
+    goal:'Query databases and clean messy real-world data',
+    tags:['SQL','MySQL','Data Cleaning','Pandas','SQLAlchemy'],
+    project:'Load a messy dataset (Zomato, Airbnb), clean it fully, and answer 5 business questions using SQL + Pandas.',
+    resources:['Mode SQL Tutorial (free)','SQLZoo / LeetCode SQL','Real Python – Pandas data cleaning'],
+    weeks:[
+      {label:'Week 1',name:'SQL fundamentals',desc:'Install a database, write your first queries, master SELECT and filtering',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Setup MySQL + first queries',tasks:['Install MySQL Community Edition or use DB Browser for SQLite','Create your first database and table, insert some rows','SQLZoo – Tutorial 0 & 1 (SELECT basics)'],tip:'SQLite is simpler to start — no server setup. Switch to MySQL in Week 2.'},
+        {name:'Tuesday',type:'Learn',preview:'WHERE, AND, OR, ORDER BY',tasks:['Practice WHERE with comparison operators: =, >, <, BETWEEN, IN','Sort results with ORDER BY ASC and DESC','SQLZoo – Tutorial 2 (SELECT from World)'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'Aggregate functions',tasks:['Use COUNT, SUM, AVG, MIN, MAX on a sample table','GROUP BY with HAVING — filter after grouping','LeetCode SQL Easy: solve 3 problems (start with #175, #176)'],tip:'GROUP BY + HAVING is asked in nearly every data analyst interview in India. Master it now.'},
+        {name:'Thursday',type:'Practice',preview:'JOINs — INNER, LEFT, RIGHT',tasks:['Create 2 related tables (students & marks) and JOIN them','SQLZoo – Tutorial 6 (JOIN)','LeetCode SQL: solve 2 JOIN problems'],tip:null},
+        {name:'Friday',type:'Practice',preview:'Subqueries & aliases',tasks:['Write a subquery in WHERE and in FROM clause','Use column and table aliases to write cleaner queries','LeetCode SQL: 2 more problems using subqueries'],tip:null},
+        {name:'Saturday',type:'Build',preview:'SQL mini project — Zomato data',tasks:['Download Zomato or any restaurant CSV, load into SQLite/MySQL','Answer 10 questions: top cuisines, avg rating by city, most popular areas','Save your .sql query file and push to GitHub'],tip:'Writing 10 queries on one dataset teaches you more than 10 tutorials.'},
+        {name:'Sunday',type:'Rest',preview:'Light review',tasks:['Write a SQL cheat sheet: SELECT, WHERE, GROUP BY, JOIN, subquery','Optional: Mode SQL Tutorial – read 1 article'],tip:null},
+       ]},
+      {label:'Week 2',name:'Advanced SQL',desc:'Window functions, CTEs, and connecting SQL to Python',
+       days:[
+        {name:'Monday',type:'Learn',preview:'String & date functions',tasks:['String functions: UPPER, LOWER, LENGTH, SUBSTRING, CONCAT','Date functions: NOW(), YEAR(), MONTH(), DATEDIFF()','Write 5 queries using string and date manipulation'],tip:null},
+        {name:'Tuesday',type:'Learn',preview:'Window functions (RANK, ROW_NUMBER)',tasks:['Learn RANK(), DENSE_RANK(), ROW_NUMBER() — with OVER()','Watch: "SQL Window Functions" by Socratica (YouTube)','LeetCode SQL: #178 Rank Scores, #184 Department Highest Salary'],tip:'Window functions feel tricky at first — solve 5 problems and they click.'},
+        {name:'Wednesday',type:'Practice',preview:'CTEs (Common Table Expressions)',tasks:['Rewrite a complex subquery as a CTE using WITH clause','Write a recursive CTE for a simple sequence or hierarchy','LeetCode SQL: 2 problems solved with CTEs'],tip:null},
+        {name:'Thursday',type:'Practice',preview:'Connect SQL to Python (SQLAlchemy)',tasks:['Install sqlalchemy and pymysql (pip install)','Connect Python to your MySQL DB, run queries from a .py file','Load SQL query result directly into a Pandas DataFrame'],tip:'This Python + SQL combo is exactly what analysts do on the job every day.'},
+        {name:'Friday',type:'Practice',preview:'CASE WHEN, NULLIF, COALESCE',tasks:['Use CASE WHEN to create conditional columns (like if-else in SQL)','Handle NULLs with COALESCE and NULLIF','LeetCode SQL: 2 problems using CASE WHEN'],tip:null},
+        {name:'Saturday',type:'Build',preview:'IPL SQL analysis',tasks:['Load IPL dataset into MySQL, answer 15 analytical questions','Use window functions: rank players by runs per season','Push a well-commented .sql file to GitHub'],tip:null},
+        {name:'Sunday',type:'Review',preview:'SQL interview prep',tasks:['Solve 5 SQL problems on StrataScratch (free tier)','Add window functions and CTEs to your SQL cheat sheet'],tip:'StrataScratch has real interview questions from companies like Amazon and Google.'},
+       ]},
+      {label:'Week 3',name:'Data cleaning & wrangling in Pandas',desc:'Handle real-world messy data — nulls, duplicates, formats, reshaping',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Detecting & handling nulls',tasks:['isnull(), notnull(), isnull().sum() — find every null in a dataset','fillna() strategies: mean, median, forward fill, constant','dropna() — when dropping is the right call'],tip:'Never blindly drop nulls. Ask: why is this data missing? The answer changes your approach.'},
+        {name:'Tuesday',type:'Practice',preview:'Duplicates, data types, rename',tasks:['duplicated(), drop_duplicates() on a real dataset','Fix data types: astype(), pd.to_datetime(), pd.to_numeric()','Rename columns, reset index, reorder columns'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'String cleaning in Pandas',tasks:['str.strip(), str.lower(), str.replace() on text columns','Extract patterns with str.extract() and regex basics','Clean a dirty CSV: fix inconsistent city names, phone formats'],tip:'80% of real analyst work is cleaning data. Getting fast at this is a superpower.'},
+        {name:'Thursday',type:'Practice',preview:'Reshape: melt, pivot, stack',tasks:['pivot_table() — like Excel pivot but in code','melt() to go from wide to long format','Reshape a sales dataset from wide (months as columns) to long format'],tip:null},
+        {name:'Friday',type:'Practice',preview:'Apply, map, lambda functions',tasks:['apply() with custom functions on rows and columns','map() and applymap() for element-wise operations','Create 3 new derived columns using apply() + lambda'],tip:null},
+        {name:'Saturday',type:'Build',preview:'Clean a real messy dataset end-to-end',tasks:['Download a truly messy dataset (try "Dirty data" on Kaggle)','Document every cleaning step in a Jupyter notebook with comments','Push: raw CSV + cleaned CSV + cleaning notebook to GitHub'],tip:'Document your reasoning, not just the code.'},
+        {name:'Sunday',type:'Review',preview:'Pandas cheat sheet + review',tasks:['Build a Pandas data cleaning cheat sheet for yourself','Redo the cleaning exercise from Wednesday without notes'],tip:null},
+       ]},
+      {label:'Week 4',name:'Capstone project & interview prep',desc:'Full end-to-end SQL + Python analysis project, plus practice for interviews',
+       days:[
+        {name:'Monday',type:'Build',preview:'Pick & plan capstone dataset',tasks:['Choose: Airbnb listings, E-commerce orders, or IRCTC train data','Define 12 analysis questions spanning SQL and Pandas','Load raw data into both MySQL and a Pandas DataFrame'],tip:'A project that uses both SQL and Python shows employers you can work in real pipelines.'},
+        {name:'Tuesday',type:'Build',preview:'SQL layer: query and extract',tasks:['Answer 6 of your questions purely in SQL with JOINs and window functions','Pull SQL results into Python using SQLAlchemy','Confirm data is clean and expected shape in Pandas'],tip:null},
+        {name:'Wednesday',type:'Build',preview:'Pandas layer: clean, transform, derive',tasks:['Handle all remaining nulls and type issues in Pandas','Create derived columns: revenue per order, days since purchase, etc.','Answer remaining 6 questions with Pandas groupby + agg'],tip:null},
+        {name:'Thursday',type:'Build',preview:'Write up insights & visuals',tasks:['Add 4–5 matplotlib charts that clearly illustrate findings','Write a markdown summary: what the data shows, what you recommend','Push everything: SQL files, notebook, README with project description'],tip:null},
+        {name:'Friday',type:'Review',preview:'SQL interview practice',tasks:['Solve 10 SQL problems on LeetCode (aim for Medium level now)','Practice explaining your queries out loud — interviewers ask "why"','Watch: "SQL interview questions" by Tina Huang (YouTube)'],tip:'Being able to explain your SQL logic verbally is as important as writing it correctly.'},
+        {name:'Saturday',type:'Review',preview:'Month 2 full review',tasks:['Review: SQL joins, window functions, CTEs, Pandas cleaning','Ensure GitHub has: SQL project, cleaning notebook, capstone project','Update your Month 1 & 2 cheat sheets into one master reference'],tip:null},
+        {name:'Sunday',type:'Rest',preview:'Plan Month 3 & rest',tasks:['Read through Month 3 roadmap (data visualization with Power BI/Plotly)','Rest well — SQL is the hardest month. You earned it.'],tip:'By end of Month 2 you should feel comfortable writing SQL without Googling every clause.'},
+       ]},
+    ]
+  },
+  {
+    id:'m3', label:'Month 3', title:'Data Visualization',
+    goal:'Turn data into clear, compelling charts and dashboards',
+    tags:['Matplotlib','Seaborn','Plotly','Dash','Power BI'],
+    project:'Build an end-to-end dashboard on a public dataset (sales, cricket, IPL) using Power BI or Plotly Dash.',
+    resources:['"Storytelling with Data" (book)','Power BI free tier (Microsoft)','Data Professor – Seaborn tutorials'],
+    weeks:[
+      {label:'Week 1',name:'Matplotlib & Seaborn foundations',desc:'Build charts from scratch in Python — the core visualization toolkit',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Matplotlib basics — line & bar charts',tasks:['Install matplotlib and seaborn (pip install)','Plot a line chart and bar chart on IPL run data','Customize: titles, axis labels, colors, figure size, grid'],tip:'Always label your axes. A chart without labels is not a chart — it is a mystery.'},
+        {name:'Tuesday',type:'Learn',preview:'Scatter, histogram, pie charts',tasks:['Scatter plot: runs vs wickets, add color by team','Histogram: distribution of scores, bin sizes matter','Pie chart: market share or category split — learn when NOT to use it'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'Seaborn — statistical charts',tasks:['sns.barplot(), sns.countplot(), sns.boxplot() on real data','sns.scatterplot() with hue and size encoding','sns.pairplot() — instantly see all relationships in a dataset'],tip:'Seaborn produces beautiful charts with far less code.'},
+        {name:'Thursday',type:'Practice',preview:'Heatmaps & subplots',tasks:['sns.heatmap() on a correlation matrix — add annot=True','plt.subplot() to put multiple charts side by side','Recreate 3 charts from a Kaggle notebook from scratch'],tip:null},
+        {name:'Friday',type:'Practice',preview:'Chart design principles',tasks:['"Storytelling with Data" Chapter 1–2 (or summary online)','Learn what to avoid: 3D charts, rainbow colormaps, chart junk','Pick a consistent color palette for your projects (ColorBrewer)'],tip:'Design is not decoration. Every color and label choice either helps or confuses your reader.'},
+        {name:'Saturday',type:'Build',preview:'Mini project: visual EDA report',tasks:['Load Student Performance or COVID India dataset','Create 6 publication-quality charts with proper labels and titles','Push notebook with charts to GitHub — screenshot the best one for README'],tip:null},
+        {name:'Sunday',type:'Rest',preview:'Light review',tasks:['List every chart type you learned — write when to use each','Optional: Watch "The beauty of data visualization" TED Talk (David McCandless)'],tip:null},
+       ]},
+      {label:'Week 2',name:'Plotly — interactive visualizations',desc:'Make charts users can hover, filter, and explore — the modern standard',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Plotly Express basics',tasks:['pip install plotly — open in Jupyter or browser','px.bar(), px.line(), px.scatter() — notice the hover tooltips','Plotly Express docs — try 5 chart types with your IPL data'],tip:'Plotly charts are interactive by default. Your audience can hover, zoom, and filter — no extra code needed.'},
+        {name:'Tuesday',type:'Learn',preview:'Plotly graph objects (go)',tasks:['go.Figure(), go.Bar(), go.Scatter() for full control','Add multiple traces to one chart (e.g., two teams on one line chart)','Customize layout: titles, font, background, legend position'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'Animated & geo charts',tasks:['px.scatter() with animation_frame — animate data over time','px.choropleth() or px.scatter_mapbox() for India state-level data','Animate IPL team performance across seasons'],tip:'Animated charts are memorable in presentations. Use sparingly — one per deck maximum.'},
+        {name:'Thursday',type:'Practice',preview:'Dash basics — web apps from Python',tasks:['pip install dash — understand the layout + callback structure','Build a simple 1-page app: dropdown filters a chart','Dash official tutorial — Chapter 1 & 2'],tip:null},
+        {name:'Friday',type:'Practice',preview:'Dash callbacks & interactivity',tasks:['Add a second filter: date range or radio buttons','Connect callback to update two charts simultaneously','Build: IPL team stats dashboard with team selector dropdown'],tip:"Knowing Dash gives you an edge — most analysts only know Power BI. A Python web app stands out."},
+        {name:'Saturday',type:'Build',preview:'Plotly Dash mini dashboard',tasks:['Build a 3-chart Dash dashboard on any Indian dataset','Add at least 2 interactive filters (dropdown + date range)','Push to GitHub with a README that includes a screenshot'],tip:null},
+        {name:'Sunday',type:'Review',preview:'Plotly vs Matplotlib review',tasks:['Write: when would you use Matplotlib vs Seaborn vs Plotly? (your own words)','Rebuild one chart from Week 1 using Plotly — compare the experience'],tip:null},
+       ]},
+      {label:'Week 3',name:'Power BI — business dashboards',desc:'The most in-demand BI tool in Indian companies — learn to build real dashboards',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Power BI Desktop setup & basics',tasks:['Download Power BI Desktop (free, Windows) or use Power BI web','Import a CSV (use Zomato or sales data), explore the data view','Create your first bar chart and card visual — publish to a page'],tip:'Power BI is used by 90% of Indian MNC analytics teams. This week is career-critical.'},
+        {name:'Tuesday',type:'Learn',preview:'Data modeling & relationships',tasks:['Connect two tables with a relationship (like SQL JOIN but visual)','Understand fact tables vs dimension tables','Microsoft Learn – Power BI fundamentals (Module 1, free)'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'DAX basics — calculated columns & measures',tasks:['Write your first DAX measure: Total Sales = SUM(Sales[Amount])','Calculated column: Profit Margin = DIVIDE(Profit, Revenue)','CALCULATE() — the most powerful DAX function, learn it well'],tip:"DAX is Power BI's formula language. CALCULATE() alone unlocks 70% of what analysts do. Spend extra time here."},
+        {name:'Thursday',type:'Practice',preview:'Slicers, filters & drill-through',tasks:['Add slicers: date range, category, region — connect to all visuals','Drill-through: click a state → see city-level breakdown','Add KPI cards, gauge charts, and a map visual'],tip:null},
+        {name:'Friday',type:'Practice',preview:'Dashboard design in Power BI',tasks:['Apply a consistent theme: colors, fonts, background','Align visuals to a grid — use the alignment tools','Watch: "Power BI full dashboard tutorial" by Chandoo (YouTube)'],tip:'A well-designed Power BI dashboard looks professional. Messy dashboards hurt more than they help.'},
+        {name:'Saturday',type:'Build',preview:'Power BI sales dashboard',tasks:['Build a 2-page Power BI dashboard on a sales or HR dataset','Page 1: overview KPIs. Page 2: detailed breakdown with drill-through','Export screenshots, add to GitHub README as portfolio evidence'],tip:null},
+        {name:'Sunday',type:'Review',preview:'Power BI review + DAX practice',tasks:['Redo 3 DAX measures from memory without looking at notes','Write a 1-page Power BI cheat sheet: visuals, DAX, filters'],tip:null},
+       ]},
+      {label:'Week 4',name:'Storytelling & capstone dashboard',desc:'Combine everything into one polished, interview-ready dashboard project',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Data storytelling principles',tasks:['"Storytelling with Data" Chapter 3–5 (or key summary)','Learn the narrative arc: context → conflict → resolution with data','Critique 3 public dashboards on Tableau Public — what works, what doesn\'t'],tip:'Data without a story is noise. Your job is to guide the viewer to the insight.'},
+        {name:'Tuesday',type:'Build',preview:'Choose & plan capstone dashboard',tasks:['Pick a domain: IPL analytics, COVID India, e-commerce sales, or Swiggy data','Define 5 key business questions your dashboard will answer','Sketch the layout on paper first — what goes where and why'],tip:'Sketch before you build. Analysts who plan their layout finish 3x faster.'},
+        {name:'Wednesday',type:'Build',preview:'Build dashboard — Power BI or Dash',tasks:['Clean and load data, create all needed calculated columns','Build all charts — bar, line, map, KPI cards, scatter','Add slicers and filters that connect across all visuals'],tip:null},
+        {name:'Thursday',type:'Build',preview:'Polish, annotate & write insights',tasks:['Apply consistent theme, fix alignment, remove chart clutter','Add text boxes with 1-line insight summaries on each visual','Review as a manager: does this answer the 5 questions clearly?'],tip:null},
+        {name:'Friday',type:'Build',preview:'Publish & document',tasks:['Push all assets: data, notebook or .pbix file, screenshots to GitHub','Write a thorough README: problem statement, tools used, key findings','Post about your project on LinkedIn — describe what you found, not how you built it'],tip:'LinkedIn posts about projects get you noticed. Write: "I analyzed 10 seasons of IPL data and found..." — not "I used Power BI."'},
+        {name:'Saturday',type:'Review',preview:'Month 3 full review',tasks:['Review: Matplotlib, Seaborn, Plotly, Dash, Power BI — cheat sheet','GitHub audit: do you have 6+ projects now? READMEs on all?','Rebuild your best chart from memory — can you do it without docs?'],tip:null},
+        {name:'Sunday',type:'Rest',preview:'Plan Month 4 & rest',tasks:['Read Month 4 roadmap (EDA deep dive + Excel for business)','You can now build real dashboards. Rest and let it sink in.'],tip:null},
+       ]},
+    ]
+  },
+  {
+    id:'m4', label:'Month 4', title:'Deep EDA & Excel for Business',
+    goal:'Master EDA and Excel for business-ready analysis',
+    tags:['EDA','Excel','Pivot Tables','Business KPIs','RFM','Cohort'],
+    project:'Pick a business domain (e-commerce, healthcare) and do a complete EDA with a written insight report.',
+    resources:['Kaggle – Intro to EDA (notebook)','ExcelJet – formula reference','Chandoo – Excel for analysts'],
+    weeks:[
+      {label:'Week 1',name:'Excel for data analysts',desc:'Master the Excel skills every business analyst uses daily — pivot tables, formulas, dashboards',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Excel fundamentals refresh',tasks:['Open a business dataset (sales, HR) in Excel — explore structure','Sort, filter, freeze panes, basic formatting for readability','Essential shortcuts: Ctrl+Shift+L (filter), Ctrl+T (table), F2 (edit cell)'],tip:'Even if you know Excel basics, spend today going fast — speed in Excel impresses interviewers.'},
+        {name:'Tuesday',type:'Learn',preview:'VLOOKUP, XLOOKUP, INDEX-MATCH',tasks:['VLOOKUP: match employee IDs across two sheets','XLOOKUP: modern replacement — handles left lookups, returns arrays','INDEX-MATCH: why analysts prefer it over VLOOKUP — practice both'],tip:'INDEX-MATCH is asked in almost every data analyst interview in India. Master it completely.'},
+        {name:'Wednesday',type:'Practice',preview:'IF, COUNTIF, SUMIF, AVERAGEIF',tasks:['Nested IF statements: grade bands, risk categories, status labels','COUNTIF, SUMIF, AVERAGEIF with multiple criteria (SUMIFS)','Build a dynamic summary table using SUMIFS across 3 conditions'],tip:null},
+        {name:'Thursday',type:'Practice',preview:'Pivot tables & pivot charts',tasks:['Create a pivot table: sales by region, month, and product category','Add slicers to make the pivot table interactive','Insert a pivot chart linked to your table — format it cleanly'],tip:'Pivot tables are the Excel superpower. A 10-minute pivot table replaces 1 hour of manual counting.'},
+        {name:'Friday',type:'Practice',preview:'Conditional formatting & data validation',tasks:['Highlight cells: top 10%, red-yellow-green scales, icon sets','Data validation: dropdown lists, number ranges, custom error messages','Apply both to a sales report — make KPIs visually scannable in seconds'],tip:null},
+        {name:'Saturday',type:'Build',preview:'Excel business dashboard',tasks:['Build a 1-sheet Excel dashboard: revenue, top products, regional split','Use pivot tables + slicers as the data engine behind the dashboard','Export as PDF and screenshot for GitHub/LinkedIn portfolio'],tip:'An Excel dashboard in your portfolio shows business readiness.'},
+        {name:'Sunday',type:'Rest',preview:'Light review',tasks:['Write an Excel formula cheat sheet: VLOOKUP, INDEX-MATCH, SUMIFS, IF','Optional: Watch Chandoo "Excel dashboards" on YouTube (1 video)'],tip:null},
+       ]},
+      {label:'Week 2',name:'Deep EDA — univariate & bivariate analysis',desc:'Develop a systematic approach to understanding any new dataset from scratch',
+       days:[
+        {name:'Monday',type:'Learn',preview:'EDA framework & univariate analysis',tasks:['Learn the EDA checklist: shape, dtypes, nulls, stats, distributions','Univariate: histogram, boxplot, value_counts() for every column','Read: Kaggle "Comprehensive EDA" notebook (pick any top notebook)'],tip:'Always start EDA with questions, not code.'},
+        {name:'Tuesday',type:'Learn',preview:'Bivariate analysis — numeric vs numeric',tasks:['Scatter plots with regression line (sns.regplot) for numeric pairs','Pearson and Spearman correlation — when to use each','sns.pairplot() with hue — find relationships across all numeric columns at once'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'Bivariate — categorical vs numeric',tasks:['Grouped bar charts and box plots: salary by department, score by gender','Group means with Pandas: df.groupby("category")["value"].mean()','Apply to Titanic or HR dataset: who survives? who earns more?'],tip:'Bivariate analysis is where analysts find the real story.'},
+        {name:'Thursday',type:'Practice',preview:'Multivariate analysis',tasks:['Scatter with size + color encoding (3 variables in one chart)','Heatmap of full correlation matrix — spot multicollinearity','sns.FacetGrid(): same chart, split by category — powerful for comparisons'],tip:null},
+        {name:'Friday',type:'Practice',preview:'Outlier analysis & feature relationships',tasks:['IQR method + z-score: detect outliers programmatically, not just visually','Decide per column: cap, remove, or keep — justify each decision in comments','Before vs after boxplots — visualize the impact of outlier treatment'],tip:null},
+        {name:'Saturday',type:'Build',preview:'Full EDA on a new dataset',tasks:['Pick a fresh dataset: Swiggy, Ola, or any Kaggle business dataset','Run the full EDA checklist — univariate, bivariate, multivariate, outliers','Push a clean, well-commented Jupyter notebook — aim for 20+ cells with markdown'],tip:null},
+        {name:'Sunday',type:'Review',preview:'EDA framework review',tasks:['Write your personal EDA template notebook — blank cells ready to fill for any new dataset','List 5 insights you found this week that surprised you'],tip:'An EDA template saves hours. You will reuse it on every project from Month 5 onward.'},
+       ]},
+      {label:'Week 3',name:'Business KPIs & case study thinking',desc:'Think like an analyst in a company — define metrics, answer business questions with data',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Business KPIs every analyst must know',tasks:['Revenue metrics: MRR, ARR, GMV, AOV (Average Order Value)','Customer metrics: CAC, LTV, churn rate, retention rate, NPS','Product metrics: DAU, MAU, conversion rate, funnel drop-off'],tip:'Knowing what KPIs mean — not just how to calculate them — is what separates analysts from data entry staff.'},
+        {name:'Tuesday',type:'Learn',preview:'Cohort analysis & retention',tasks:['Build a monthly cohort table: which month did each user join?','Calculate retention rate per cohort — plot as a heatmap','Watch: "Cohort Analysis in Python" by Data School (YouTube)'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'Funnel analysis',tasks:['Define a conversion funnel: visit → signup → purchase → repeat','Calculate drop-off % at each stage — where do users leave?','Build a funnel chart in Python or Power BI on e-commerce data'],tip:'Funnel analysis is asked in product analyst interviews constantly.'},
+        {name:'Thursday',type:'Practice',preview:'A/B test thinking & business cases',tasks:['Understand A/B testing: control vs treatment, statistical significance','Calculate p-value with scipy.stats.ttest_ind() on sample data','Read 2 business case studies from Stratechery or similar blogs'],tip:null},
+        {name:'Friday',type:'Practice',preview:'RFM analysis (Recency, Frequency, Monetary)',tasks:['Segment customers by RFM score on an e-commerce dataset','Visualize segments: Champions, At Risk, Lost customers','Add RFM analysis notebook to your GitHub portfolio'],tip:'RFM is a classic analyst technique — mentioning it in interviews shows business domain knowledge.'},
+        {name:'Saturday',type:'Build',preview:'End-to-end business case analysis',tasks:['"Why did sales drop in Q3?" — use data to investigate','Build a 10-slide analysis: hypothesis → data → findings → recommendation','Write a 1-page executive summary — practice communicating to non-technical readers'],tip:'The ability to present findings to a manager is worth as much as the analysis itself.'},
+        {name:'Sunday',type:'Review',preview:'Business thinking review',tasks:['Write definitions of 10 KPIs from memory — no looking','"How would you measure the success of a new app feature?" — answer out loud'],tip:null},
+       ]},
+      {label:'Week 4',name:'Capstone EDA + Month 4 review',desc:'Your most comprehensive analysis yet — a full business EDA with insights and recommendations',
+       days:[
+        {name:'Monday',type:'Build',preview:'Choose capstone dataset & define problem',tasks:['Choose: e-commerce orders, HR attrition, healthcare, or banking dataset','Write a clear problem statement: "I want to understand why customer churn is high"','Define 10 analysis questions — mix of descriptive, diagnostic, and KPI-based'],tip:'A strong problem statement makes your notebook 10x more readable.'},
+        {name:'Tuesday',type:'Build',preview:'Full EDA — cleaning & univariate',tasks:['Run full cleaning: nulls, types, duplicates, outliers — document every decision','Univariate analysis on all key columns with charts and written observations','After each chart write 1 sentence: what does this tell me?'],tip:null},
+        {name:'Wednesday',type:'Build',preview:'Bivariate & multivariate analysis',tasks:['Answer your 10 questions using grouped charts, correlation, and groupby','If applicable: cohort analysis, funnel, or RFM segmentation','Minimum 15 well-labelled charts with markdown commentary'],tip:null},
+        {name:'Thursday',type:'Build',preview:'Business insights & recommendations',tasks:['Write 5 key insights from the data — specific numbers, not vague observations','For each insight write: "This means the business should..."','Add an executive summary section at the top of the notebook'],tip:'Insight: "Customers who buy in December churn 40% less" — that is actionable. "Sales vary by month" is not.'},
+        {name:'Friday',type:'Build',preview:'Polish & publish',tasks:['Push full notebook to GitHub with a detailed README','Post on LinkedIn: share 1 surprising finding with a chart screenshot','Review notebook as a recruiter — is every chart clear? Is the story logical?'],tip:null},
+        {name:'Saturday',type:'Review',preview:'Month 4 full review',tasks:['Review: Excel formulas, EDA checklist, KPIs, cohort, RFM, funnel','GitHub audit: aim for 9–10 projects by now, all with READMEs','Update your master cheat sheet with EDA template and KPI definitions'],tip:null},
+        {name:'Sunday',type:'Rest',preview:'Plan Month 5 & rest',tasks:['Read Month 5 roadmap — machine learning basics with scikit-learn','You are halfway through. Your skills are already above average for a fresh CSE grad. Rest well.'],tip:null},
+       ]},
+    ]
+  },
+  {
+    id:'m5', label:'Month 5', title:'Machine Learning Basics',
+    goal:'Apply beginner ML to real data problems',
+    tags:['scikit-learn','Linear Regression','Random Forest','Kaggle','Pipelines'],
+    project:'Build a prediction model (house price, loan default, student score) and write a Kaggle-style notebook.',
+    resources:['Kaggle Learn – Intro to ML','fast.ai Practical ML (free)','StatQuest – ML playlist'],
+    weeks:[
+      {label:'Week 1',name:'ML mindset & linear regression',desc:'Understand how machines learn, then build your first predictive model from scratch',
+       days:[
+        {name:'Monday',type:'Learn',preview:'What is machine learning?',tasks:['Supervised vs unsupervised vs reinforcement learning — understand the difference','Classification vs regression — when to use each with real examples','Watch: "Machine Learning in 100 seconds" by Fireship + StatQuest ML intro'],tip:"Don't rush to code yet. Understanding WHEN to use which algorithm is more valuable than knowing HOW to code them."},
+        {name:'Tuesday',type:'Learn',preview:"Train-test split & scikit-learn setup",tasks:['pip install scikit-learn — explore the sklearn API structure','train_test_split(): why we split data and what leakage means','Kaggle Learn – Intro to ML Lesson 1 & 2'],tip:'Data leakage is the #1 silent mistake in ML. Understand it deeply before building any model.'},
+        {name:'Wednesday',type:'Learn',preview:'Simple linear regression',tasks:['Concept: y = mx + c — how gradient descent finds the best line','Fit LinearRegression() on house price or student score data','Understand coefficients and intercept — what do they mean in plain English?'],tip:null},
+        {name:'Thursday',type:'Practice',preview:'Multiple linear regression & assumptions',tasks:['Add multiple features — understand how each coefficient changes','Check assumptions: linearity, no multicollinearity, homoscedasticity','Residual plot: are errors random? If not, your model has a problem'],tip:'Most tutorials skip assumptions. Interviewers at serious companies ask about them. Know all four.'},
+        {name:'Friday',type:'Practice',preview:'Model evaluation — regression metrics',tasks:['MAE, MSE, RMSE — calculate each and understand what they punish','R² score — what does 0.82 actually mean? Can it be negative?','Compare: model with 2 features vs 5 features — which metrics improve?'],tip:null},
+        {name:'Saturday',type:'Build',preview:'House price / student score predictor',tasks:['Build end-to-end: load data → EDA → clean → split → train → evaluate','Plot: actual vs predicted values, residuals histogram','Push a well-structured notebook with markdown explaining each step'],tip:"Write what each step does in markdown — future you and interviewers will thank you."},
+        {name:'Sunday',type:'Rest',preview:'Light review',tasks:['Write: what is bias vs variance? what is overfitting? in your own words','Optional: StatQuest "Bias and Variance" video (12 min)'],tip:null},
+       ]},
+      {label:'Week 2',name:'Classification — logistic regression & trees',desc:'Predict categories — churn, fraud, disease — the most common real-world ML task',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Logistic regression — classification basics',tasks:['Why linear regression fails for classification — the sigmoid function','LogisticRegression() on Titanic or loan default dataset','Output is a probability — understand the 0.5 threshold and how to change it'],tip:"Logistic regression is simple but powerful. Many production ML systems still use it — don't underestimate it."},
+        {name:'Tuesday',type:'Learn',preview:'Classification metrics — beyond accuracy',tasks:['Confusion matrix: TP, FP, TN, FN — draw it by hand first','Precision, Recall, F1 score — when to prioritize each','ROC curve and AUC — plot it, understand what "random" looks like'],tip:'Accuracy alone is misleading. If 95% of transactions are genuine, a model that predicts "genuine" always gets 95% accuracy — and catches zero fraud.'},
+        {name:'Wednesday',type:'Practice',preview:'Decision tree classifier',tasks:['DecisionTreeClassifier() — fit on same dataset, compare to logistic regression','Visualize the tree with sklearn.tree.plot_tree() — understand splits','Tune max_depth: watch how overfitting changes with depth'],tip:null},
+        {name:'Thursday',type:'Practice',preview:'Random Forest — ensemble power',tasks:['RandomForestClassifier() — why many trees beat one tree','feature_importances_: which features matter most? Plot them','n_estimators, max_depth, min_samples_split — tune and compare scores'],tip:'Random Forest is the most reliable out-of-the-box ML model. If you only learn one algorithm well, make it this one.'},
+        {name:'Friday',type:'Practice',preview:'Cross-validation & overfitting',tasks:['cross_val_score() with cv=5 — why one train-test split is not enough','Learning curve: plot train vs validation score as data size grows','GridSearchCV: systematic hyperparameter tuning on Random Forest'],tip:null},
+        {name:'Saturday',type:'Build',preview:'Churn or fraud classification model',tasks:['Build: customer churn model (Telco dataset on Kaggle) — full pipeline','Report: confusion matrix, F1, AUC — explain which metric matters and why','Push notebook — include a section "What I would do differently with more time"'],tip:'Adding a "limitations and next steps" section shows maturity. Interviewers notice it.'},
+        {name:'Sunday',type:'Review',preview:'Classification review',tasks:['Quiz yourself: precision vs recall — when does each matter more? (give 2 examples each)','Add classification metrics to your master cheat sheet'],tip:null},
+       ]},
+      {label:'Week 3',name:'Feature engineering & model pipelines',desc:'The skill that separates good ML from great ML — transform raw data into powerful features',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Feature engineering fundamentals',tasks:['Why raw features rarely work — what "engineering" actually means','Extract from datetime: hour, day_of_week, is_weekend, days_since','Ratio features: revenue_per_user, clicks_per_impression, score_per_attempt'],tip:'Good features beat fancy algorithms every time.'},
+        {name:'Tuesday',type:'Learn',preview:'Encoding categorical variables',tasks:['Label encoding vs one-hot encoding — when to use each','pd.get_dummies() and sklearn OneHotEncoder() — try both','Dummy variable trap: drop_first=True — understand why it matters'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'Feature scaling',tasks:['StandardScaler (z-score) vs MinMaxScaler — when each is appropriate',"Why tree models don't need scaling but linear and KNN models do",'Compare logistic regression performance: unscaled vs scaled features'],tip:'Always fit the scaler on train data only — then transform both train and test. Fitting on test is data leakage.'},
+        {name:'Thursday',type:'Practice',preview:'sklearn Pipeline — production-ready code',tasks:['Pipeline([("scaler", StandardScaler()), ("model", LogisticRegression())])','Why pipelines prevent leakage and make code cleaner and deployable','GridSearchCV on a full pipeline — tune preprocessor and model together'],tip:'Pipelines are how ML is done in real companies. A notebook with a pipeline is production-ready.'},
+        {name:'Friday',type:'Practice',preview:'Handling imbalanced data',tasks:['What is class imbalance? Why it kills model performance silently','SMOTE oversampling with imbalanced-learn library','class_weight="balanced" in sklearn — the simplest fix, often enough'],tip:'Fraud detection, disease prediction, churn — all have imbalanced classes. This topic comes up in every ML interview.'},
+        {name:'Saturday',type:'Build',preview:'Full ML pipeline project',tasks:['Rebuild your Week 2 churn model — this time using a full sklearn Pipeline','Add feature engineering: ratio features, date extractions, encoding all in pipeline','Compare v1 (Week 2) vs v2 (pipeline) — document the improvement in README'],tip:null},
+        {name:'Sunday',type:'Review',preview:'Feature engineering review',tasks:['List 10 feature engineering techniques you learned this week from memory','Write: what is the difference between fit() and transform()? Why does it matter?'],tip:null},
+       ]},
+      {label:'Week 4',name:'Kaggle competition & ML capstone',desc:'Apply everything on a real Kaggle competition — your most impressive portfolio project yet',
+       days:[
+        {name:'Monday',type:'Learn',preview:'Kaggle workflow & notebooks',tasks:['Create/update Kaggle account — explore the Competitions tab','Read top notebooks for Titanic competition — how do experts structure them?','Pick your competition: Titanic (beginner), House Prices, or Playground Series'],tip:'Kaggle notebooks are the gold standard portfolio format. Upvoted Kaggle notebooks get more recruiter attention than GitHub repos.'},
+        {name:'Tuesday',type:'Build',preview:'Competition EDA & baseline model',tasks:['Full EDA on competition data: distributions, nulls, target imbalance','Submit a baseline model (even a simple one) — get your first public score','Understand the leaderboard metric — is it RMSE? AUC? Log loss?'],tip:null},
+        {name:'Wednesday',type:'Build',preview:'Feature engineering for competition',tasks:['Create 5+ new features based on domain knowledge of the dataset','Impute missing values thoughtfully — median, mode, or model-based','Submit improved model — track your public leaderboard score'],tip:'In Kaggle competitions, feature engineering moves your score more than changing algorithms.'},
+        {name:'Thursday',type:'Build',preview:'Model comparison & tuning',tasks:['Compare: Logistic Regression, Random Forest, Gradient Boosting','GridSearchCV or RandomizedSearchCV on your best model','Submit tuned model — aim for top 30% on the leaderboard'],tip:null},
+        {name:'Friday',type:'Build',preview:'Write-up & publish notebook',tasks:['Write a detailed Kaggle notebook: problem → EDA → features → model → results','Push same notebook to GitHub with full README','Post your leaderboard rank + key finding on LinkedIn'],tip:'A public Kaggle notebook with upvotes is worth 3 private GitHub projects in a recruiter\'s eyes.'},
+        {name:'Saturday',type:'Review',preview:'Month 5 full review',tasks:['Review all algorithms: linear regression, logistic regression, decision tree, random forest','GitHub + Kaggle audit: 11–12 projects total, at least 1 Kaggle notebook public','Update master cheat sheet: algorithms, metrics, when to use each'],tip:null},
+        {name:'Sunday',type:'Rest',preview:'Plan Month 6 & celebrate',tasks:['Read Month 6 roadmap — portfolio polish, certificates, job applications','5 months done. You now have Python, SQL, visualization, EDA, and ML. You are job-ready. Rest well.'],tip:null},
+       ]},
+    ]
+  },
+  {
+    id:'m6', label:'Month 6', title:'Portfolio, Certificates & Jobs',
+    goal:'Build a strong portfolio and start applying',
+    tags:['GitHub Portfolio','LinkedIn','Resume','Google Certificate','Interviews','Kaggle'],
+    project:'Publish 3 polished portfolio projects on GitHub. Apply to internships and start networking on LinkedIn.',
+    resources:['Google Data Analytics (Coursera)','StrataScratch – interview Qs','Luke Barousse – DA career tips'],
+    weeks:[
+      {label:'Week 1',name:'GitHub portfolio polish',desc:'Transform your 12 projects into a professional portfolio that makes recruiters stop scrolling',
+       days:[
+        {name:'Monday',type:'Build',preview:'GitHub profile README',tasks:['Create a GitHub profile README (special repo: username/username)','Add: skills table, 3 featured projects, contact links, learning journey','Watch: "GitHub profile README tutorial" by codeSTACKr (10 min)'],tip:'Your GitHub profile README is your developer homepage. Recruiters see it before they open any project. Spend 2 hours on it.'},
+        {name:'Tuesday',type:'Build',preview:'Audit & fix all project READMEs',tasks:['Every project must have: problem statement, tools used, key findings, screenshot','Add chart/dashboard screenshots to every notebook project — visuals get clicks','Read each README as a recruiter: does it explain what you did and why in 30 seconds?'],tip:null},
+        {name:'Wednesday',type:'Build',preview:'Pin your 6 best projects',tasks:['Pin exactly 6 repositories on your GitHub profile — your strongest work','Order: capstone EDA → Kaggle notebook → Power BI dashboard → SQL project → ML model → Python project','Add topics/tags to each repo: "data-analysis", "pandas", "power-bi", "machine-learning"'],tip:'Recruiters spend 90 seconds on your GitHub. Pinned repos are all they see. Make every one count.'},
+        {name:'Thursday',type:'Build',preview:'Kaggle profile polish',tasks:['Complete your Kaggle profile: bio, photo, location, links to GitHub + LinkedIn','Make your best competition notebook public — add a proper introduction section','Check your Kaggle tier (Novice → Contributor) — upvoting others builds community karma'],tip:null},
+        {name:'Friday',type:'Build',preview:'Create a portfolio PDF / website',tasks:['Option A: 1-page portfolio PDF — project title, tools, 1-line finding, screenshot','Option B: Free portfolio site with GitHub Pages or Notion — link all projects','Share your GitHub + Kaggle links in LinkedIn bio and contact section'],tip:'A Notion portfolio page is fast to build and looks professional. Many Indian recruiters ask for a portfolio link.'},
+        {name:'Saturday',type:'Review',preview:'Portfolio review with fresh eyes',tasks:['Ask a friend or classmate to navigate your GitHub for 2 minutes — what confused them?','Fix anything that was unclear — clarity matters more than cleverness','Checklist: photo, bio, pinned repos, all READMEs, Kaggle public, LinkedIn linked'],tip:null},
+        {name:'Sunday',type:'Rest',preview:'Rest and prep for resume week',tasks:['Jot down: 3 projects you are most proud of and why — you will use this in interviews','Week 1 done. Your online presence now represents you before you walk into any room.'],tip:null},
+       ]},
+      {label:'Week 2',name:'Resume, LinkedIn & certificate',desc:'Build an ATS-beating resume, optimize LinkedIn, and earn a recognized certificate',
+       days:[
+        {name:'Monday',type:'Build',preview:'Data analyst resume — structure',tasks:['Use a clean single-column template (ATS-friendly — no tables, columns, or graphics)','Sections in order: Summary → Skills → Projects → Education → Certificates','Read: "How to write a data analyst resume" by DataLemur or Tina Huang blog'],tip:'In India, most resumes go through ATS at MNCs. Fancy formatting gets rejected before a human sees it. Plain is powerful.'},
+        {name:'Tuesday',type:'Build',preview:'Resume — projects & skills sections',tasks:['Each project: 2–3 bullet points. Format: "Did X using Y, resulting in Z (with a number)"','Skills section: Python, SQL, Pandas, NumPy, Matplotlib, Seaborn, Plotly, Power BI, scikit-learn, Excel, Git','Remove: "Good communication skills", "Team player", "Quick learner" — these add nothing'],tip:'"Analyzed 50,000 rows of IPL data using Pandas and SQL, identified top 3 factors affecting match outcomes" is a resume bullet. "Worked on data analysis project" is not.'},
+        {name:'Wednesday',type:'Build',preview:'Resume — summary & tailoring',tasks:['Write a 2-line summary: "CSE student with 6 months of hands-on data analytics experience in Python, SQL, and Power BI"','Tailor for each job: if JD says "Tableau" and you know Power BI, mention both if true','Run your resume through Jobscan or Resume Worded (free) — check ATS score'],tip:null},
+        {name:'Thursday',type:'Build',preview:'LinkedIn profile optimization',tasks:['Professional headshot (plain background, good lighting — phone camera is fine)','Headline: "Aspiring Data Analyst | Python · SQL · Power BI · Machine Learning"','About section: 3 paragraphs — who you are, what you have built, what you are looking for'],tip:'LinkedIn headline is the most important field. It appears in search results and InMail previews. Make every word count.'},
+        {name:'Friday',type:'Build',preview:'LinkedIn — projects & skills endorsements',tasks:['Add each project under "Projects" section with GitHub link and 2-line description','Skills section: add all tools — ask 2–3 classmates or professors to endorse your top 5','Connect with 20 data analysts in India — personalized note, not the default message'],tip:'Personalized connection requests get a 40% higher acceptance rate.'},
+        {name:'Saturday',type:'Learn',preview:'Start Google Data Analytics certificate',tasks:['Enroll: Google Data Analytics on Coursera (audit free, or apply for financial aid)','Complete Course 1 (Foundations of Data) — most content will be revision for you','Aim: 2 courses per week for 4 weeks — the certificate has 8 courses total'],tip:'Google DA certificate is recognized by TCS, Infosys, Wipro, and most MNCs in India. Worth the 4-week sprint.'},
+        {name:'Sunday',type:'Rest',preview:'Review resume + plan job search',tasks:['Read your resume out loud — does every line make you sound capable and specific?','Identify 10 companies you want to target next week — note their specific JD requirements'],tip:null},
+       ]},
+      {label:'Week 3',name:'Interview prep — SQL, Python & case studies',desc:'Practice the exact questions asked in Indian data analyst interviews at top companies',
+       days:[
+        {name:'Monday',type:'Practice',preview:'SQL interview questions — easy to medium',tasks:['LeetCode SQL: solve 5 Medium problems — focus on window functions and JOINs','Watch: "Top 20 SQL interview questions" by Ankit Bansal (YouTube)','Practice explaining your SQL query out loud for each problem — not just writing it'],tip:'In Indian MNC interviews (TCS, Infosys, Wipro, Accenture), SQL is tested in every round. Aim for 50 solved problems before your first interview.'},
+        {name:'Tuesday',type:'Practice',preview:'Python & Pandas interview questions',tasks:['StrataScratch: solve 5 Python/Pandas problems (real company questions)','Common topics: groupby, merge, pivot, apply, string operations, datetime','Practice: "How do you handle missing values?" — give a structured answer with examples'],tip:null},
+        {name:'Wednesday',type:'Practice',preview:'Statistics & probability interview Qs',tasks:['Be ready to explain: mean vs median, when each is better — with a real example','Explain p-value, confidence interval, and A/B testing in plain English','"A coin flips heads 8 times in a row — is it biased?" — think through it'],tip:'Statistics questions separate analyst candidates from data entry candidates.'},
+        {name:'Thursday',type:'Practice',preview:'ML concepts for analyst interviews',tasks:['Explain: overfitting, bias-variance tradeoff, cross-validation — in simple terms','When would you use classification vs regression? Give 2 examples of each','Walk through: precision vs recall — which matters more for fraud detection?'],tip:null},
+        {name:'Friday',type:'Practice',preview:'Business case & guesstimates',tasks:['"How would you measure the success of Swiggy\'s new feature?" — structure your answer','"Estimate the number of data analysts in Pune" — guesstimate framework: population → segment → ratio','"Our sales dropped 20% last month — how would you investigate?" — systematic breakdown'],tip:'Business case questions are asked at product companies (Flipkart, Swiggy, Zepto, CRED). Practice the structured approach.'},
+        {name:'Saturday',type:'Practice',preview:'Mock interview — full round simulation',tasks:['Do a full 45-minute mock interview with a friend or on Pramp (free peer interviews)','Cover all 4 areas: SQL query, Python problem, statistics Q, business case','Record yourself or take notes — identify 3 weakest areas to fix next week'],tip:'Mock interviews are uncomfortable — that is the point.'},
+        {name:'Sunday',type:'Review',preview:'Weak areas deep dive',tasks:['Spend 2 hours on your 3 weakest interview areas from Saturday\'s mock','Find 1 YouTube video for each weak area — targeted revision beats general review'],tip:null},
+       ]},
+      {label:'Week 4',name:'Job applications, networking & offers',desc:'Apply strategically, follow up properly, and convert your 6 months of work into a role',
+       days:[
+        {name:'Monday',type:'Apply',preview:'Apply to 10 targeted jobs',tasks:['Apply on: LinkedIn, Naukri, Instahyre, Wellfound (startups) — tailor resume per JD','Search terms: "Data Analyst fresher", "Junior Data Analyst", "Business Analyst fresher"','Target mix: 3 MNCs (TCS, Wipro, Accenture), 4 mid-size companies, 3 startups (Zepto, CRED, Razorpay)'],tip:'Apply to startups seriously — they hire faster, pay well, and give more hands-on work than MNCs for freshers.'},
+        {name:'Tuesday',type:'Apply',preview:'Referrals & warm outreach',tasks:['Message 5 alumni from your college who work in data roles — ask for a 15-min call','Join: "Data Analytics India" and "Data Science Beginners India" groups on LinkedIn','Email professors or lab contacts who work with industry — ask if they know of openings'],tip:'A referral from an employee increases your interview chances by 5–10x at Indian companies.'},
+        {name:'Wednesday',type:'Apply',preview:'Internship platforms & campus drives',tasks:['Apply on Internshala, Unstop, and LetsIntern for data analyst internships','Register for campus placement if available — prepare your placement profile','Check company career pages directly: Google, Amazon, Microsoft, Flipkart'],tip:null},
+        {name:'Thursday',type:'Practice',preview:'Continue interview prep + follow-ups',tasks:['Solve 5 more SQL problems on LeetCode or StrataScratch — keep the habit going','Follow up on applications sent Monday — LinkedIn message to recruiter: polite, 2 lines','Complete 2 more courses of Google DA certificate — stay on track'],tip:'Following up once, 5–7 days after applying, increases response rate significantly.'},
+        {name:'Friday',type:'Apply',preview:'Content & visibility on LinkedIn',tasks:['Post on LinkedIn: share your 6-month journey — what you learned, what surprised you, what you built','Post 1 chart or insight from your best project — "I found that..." format works well','Comment thoughtfully on 5 posts by data professionals you follow — visibility compounds'],tip:'LinkedIn content from students gets high engagement because it is authentic.'},
+        {name:'Saturday',type:'Review',preview:'6-month full review & celebration',tasks:['List everything you have built: projects, tools, concepts — it will surprise you how much it is','Final audit: GitHub (12+ projects), LinkedIn (optimized), Resume (ATS-ready), Kaggle (public notebook), Certificate (in progress)','Do one final mock interview — you will notice how much more confident you are than Week 3'],tip:null},
+        {name:'Sunday',type:'Rest',preview:'Rest — you are ready',tasks:['6 months of consistent work. Python, SQL, visualization, EDA, ML, portfolio, and interview prep. You are ready.','The job is not the end — it is the beginning. Keep learning, keep building, keep posting.'],tip:'Most data analyst roles in India are filled within 2–8 weeks of active applying. Stay consistent, follow up, and do not get discouraged by rejections.'},
+       ]},
+    ]
+  },
+];
+
+// ─── NAV ───────────────────────────────────────────────────────────────────
+const navLinks = document.getElementById('navLinks');
+['Home','Overview','Month 1','Month 2','Month 3','Month 4','Month 5','Month 6','Checklist'].forEach((label, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'nav-link';
+  btn.textContent = label;
+  const targets = ['home','overview','m1','m2','m3','m4','m5','m6','checklist'];
+  btn.onclick = () => document.getElementById(targets[i])?.scrollIntoView({behavior:'smooth'});
+  navLinks.appendChild(btn);
+});
+
+// ─── OVERVIEW GRID ─────────────────────────────────────────────────────────
+const grid = document.getElementById('monthsGrid');
+data.forEach((m, i) => {
+  const card = document.createElement('div');
+  card.className = 'month-card';
+  card.id = 'card_' + m.id;
+  card.innerHTML = `
+    <div class="month-num" style="color:${ACCENT[i]}">${m.label}</div>
+    <div class="month-title">${m.title}</div>
+    <div class="month-goal">${m.goal}</div>
+    <div class="month-tags">${m.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    <div class="month-done-badge">✓ Completed</div>
+    <div class="month-arrow">→</div>`;
+  card.onclick = () => document.getElementById(m.id)?.scrollIntoView({behavior:'smooth'});
+  grid.appendChild(card);
+});
+
+// ─── MONTH DETAIL SECTIONS ─────────────────────────────────────────────────
+const sectionsEl = document.getElementById('monthSections');
+data.forEach((m, mi) => {
+  const sec = document.createElement('section');
+  sec.className = 'month-section';
+  sec.id = m.id;
+
+  // Week tabs — include global week index for progress tracking (weeks 0–23)
+  let weeksTabsHTML = m.weeks.map((w,wi) => {
+    const globalWk = mi * 4 + wi;
+    return `<button class="week-tab${wi===0?' active':''}" data-month="${mi}" data-week="${wi}" data-global="${globalWk}" id="wtab_${mi}_${wi}">${w.label}</button>`;
+  }).join('');
+
+  let weekPanelsHTML = m.weeks.map((w,wi) => {
+    const globalWk = mi * 4 + wi;
+    let daysHTML = w.days.map((d,di) => {
+      const ts = TYPE_STYLE[d.type] || TYPE_STYLE.Learn;
+      const tasksHTML = d.tasks.map((t,ti) => {
+        const taskId = `task_${mi}_${wi}_${di}_${ti}`;
+        return `<div class="task-item" id="${taskId}" onclick="toggleTask('${taskId}',${mi},${wi},${di},${ti},${d.tasks.length})">
+          <div class="task-cb">✓</div>
+          <span class="task-text">${t}</span>
+        </div>`;
+      }).join('');
+      const pipsHTML = d.tasks.map((_,ti) => `<div class="task-pip" id="pip_${mi}_${wi}_${di}_${ti}"></div>`).join('');
+      const tipHTML = d.tip ? `<div class="tip"><strong>✦ TIP</strong>${d.tip}</div>` : '';
+      return `
+        <div class="day-row" id="day_${mi}_${wi}_${di}">
+          <div class="day-head" onclick="toggleDay(this)">
+            <span class="day-name">${d.name}</span>
+            <span class="day-type-badge" style="background:${ts.bg};color:${ts.color}">${d.type}</span>
+            <span class="day-preview">${d.preview}</span>
+            <span class="day-done-check" style="display:none">✓</span>
+            <span class="day-chevron">▼</span>
+          </div>
+          <div class="day-body">
+            <div class="day-task-progress"><div class="day-task-pips">${pipsHTML}</div><span id="daypct_${mi}_${wi}_${di}">0 / ${d.tasks.length} tasks</span></div>
+            ${tasksHTML}
+            ${tipHTML}
+          </div>
+        </div>`;
+    }).join('');
+
+    return `
+      <div class="week-panel${wi===0?' visible':''}" data-month="${mi}" data-week="${wi}" data-global="${globalWk}" id="wpanel_${mi}_${wi}">
+        <div class="week-done-banner">
+          <div class="week-done-icon">✓</div>
+          <div>
+            <div class="week-done-text">${w.label} complete — ${w.name}</div>
+            <div class="week-done-sub">All 7 days finished. This week is locked in your progress.</div>
+          </div>
+        </div>
+        <div class="week-info">
+          <div class="week-name">${w.name}</div>
+          <div class="week-desc">${w.desc}</div>
+        </div>
+        ${daysHTML}
+        <div class="resources-box">
+          <div class="resources-label">RESOURCES</div>
+          ${m.resources.map(r=>`<div class="resource-item"><div class="resource-dot"></div>${r}</div>`).join('')}
+        </div>
+        <div class="project-box">
+          <div class="project-label">✦ MONTH PROJECT</div>
+          <div class="project-text">${m.project}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  sec.innerHTML = `
+    <div class="container">
+      <div class="month-header">
+        <div class="month-badge-big" style="background:${ACCENT_BG[mi]};color:${ACCENT[mi]}">${m.label.replace('Month ','M')}</div>
+        <div class="month-header-text">
+          <h2>${m.title}</h2>
+          <p>${m.goal}</p>
+        </div>
+      </div>
+      <div class="weeks-tabs" id="wtabs_${mi}">${weeksTabsHTML}</div>
+      <div>${weekPanelsHTML}</div>
+    </div>`;
+  sectionsEl.appendChild(sec);
+});
+
+// ─── WEEK TAB SWITCHING ────────────────────────────────────────────────────
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('week-tab')) {
+    const mi = e.target.dataset.month;
+    const wi = e.target.dataset.week;
+    document.querySelectorAll(`.week-tab[data-month="${mi}"]`).forEach(b => b.classList.remove('active'));
+    document.querySelectorAll(`.week-panel[data-month="${mi}"]`).forEach(p => p.classList.remove('visible'));
+    e.target.classList.add('active');
+    document.querySelector(`.week-panel[data-month="${mi}"][data-week="${wi}"]`)?.classList.add('visible');
+  }
+});
+
+// ─── TOGGLE DAY (only for non-completed days) ──────────────────────────────
+function toggleDay(head) {
+  const row = head.closest('.day-row');
+  if (row && row.classList.contains('day-done')) return; // locked by time
+  const body = head.nextElementSibling;
+  const chev = head.querySelector('.day-chevron');
+  const isOpen = body.classList.toggle('open');
+  if (chev) chev.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0)';
+}
+
+// ─── TASK CHECKBOX TOGGLE ──────────────────────────────────────────────────
+const TASK_KEY = 'da_tasks'; // localStorage key for all task states
+
+function getTaskStore() {
+  try { return JSON.parse(localStorage.getItem(TASK_KEY) || '{}'); }
+  catch(e) { return {}; }
+}
+function saveTaskStore(store) {
+  localStorage.setItem(TASK_KEY, JSON.stringify(store));
+}
+
+function toggleTask(taskId, mi, wi, di, ti, totalTasks) {
+  const el = document.getElementById(taskId);
+  if (!el) return;
+
+  const store = getTaskStore();
+  const wasChecked = store[taskId] === true;
+  store[taskId] = !wasChecked;
+  saveTaskStore(store);
+
+  applyTaskState(taskId, !wasChecked);
+  refreshDayState(mi, wi, di, totalTasks, store);
+}
+
+function applyTaskState(taskId, checked) {
+  const el = document.getElementById(taskId);
+  if (!el) return;
+  el.classList.toggle('task-checked', checked);
+}
+
+function refreshDayState(mi, wi, di, totalTasks, store) {
+  let doneCount = 0;
+  for (let ti = 0; ti < totalTasks; ti++) {
+    const id = `task_${mi}_${wi}_${di}_${ti}`;
+    if (store[id]) {
+      doneCount++;
+      const pip = document.getElementById(`pip_${mi}_${wi}_${di}_${ti}`);
+      if (pip) pip.classList.add('done');
+    } else {
+      const pip = document.getElementById(`pip_${mi}_${wi}_${di}_${ti}`);
+      if (pip) pip.classList.remove('done');
+    }
+  }
+
+  const pctEl = document.getElementById(`daypct_${mi}_${wi}_${di}`);
+  if (pctEl) pctEl.textContent = `${doneCount} / ${totalTasks} tasks`;
+
+  const row = document.getElementById(`day_${mi}_${wi}_${di}`);
+  if (!row) return;
+
+  const allDone = doneCount === totalTasks;
+  row.classList.toggle('tasks-all-done', allDone);
+
+  // Show/hide the ✓ in the header
+  const check = row.querySelector('.day-done-check');
+  if (check && !row.classList.contains('day-done')) {
+    check.style.display = allDone ? 'inline' : 'none';
+  }
+}
+
+function restoreAllTaskStates() {
+  const store = getTaskStore();
+  data.forEach((m, mi) => {
+    m.weeks.forEach((w, wi) => {
+      w.days.forEach((d, di) => {
+        d.tasks.forEach((_, ti) => {
+          const id = `task_${mi}_${wi}_${di}_${ti}`;
+          if (store[id]) applyTaskState(id, true);
+        });
+        refreshDayState(mi, wi, di, d.tasks.length, store);
+      });
+    });
+  });
+}
+
+// Restore task states on page load
+restoreAllTaskStates();
+
+// ─── PROGRESS TRACKING ─────────────────────────────────────────────────────
+const STORAGE_KEY = 'da_roadmap_start_date';
+const TOTAL_WEEKS = 24;
+
+function getDaysBetween(d1, d2) {
+  return Math.floor((d2 - d1) / (1000 * 60 * 60 * 24));
+}
+
+function applyProgress(startDateStr) {
+  if (!startDateStr) return;
+
+  const startDate = new Date(startDateStr + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const daysPassed = getDaysBetween(startDate, today);
+  // A week is considered complete after 7 full days (end of Sunday)
+  // Week 0 = days 0-6, Week 1 = days 7-13, etc.
+  const weeksCompleted = Math.min(Math.floor(daysPassed / 7), TOTAL_WEEKS);
+  const currentWeekIndex = Math.min(Math.floor(daysPassed / 7), TOTAL_WEEKS - 1); // 0-based ongoing week
+
+  // Update summary bar
+  const pct = Math.round((weeksCompleted / TOTAL_WEEKS) * 100);
+  document.getElementById('weeksCompletedCount').textContent = weeksCompleted;
+  document.getElementById('progressSummary').style.display = 'flex';
+  document.getElementById('startHint').style.display = 'none';
+  document.getElementById('overallProgressBar').style.display = 'block';
+  document.getElementById('overallFill').style.width = pct + '%';
+  document.getElementById('overallPct').textContent = pct + '%';
+
+  // Current week label
+  if (weeksCompleted < TOTAL_WEEKS) {
+    const cmi = Math.floor(currentWeekIndex / 4);
+    const cwi = currentWeekIndex % 4;
+    const cw = data[cmi]?.weeks[cwi];
+    document.getElementById('currentWeekLabel').textContent =
+      cw ? `Now: M${cmi+1} ${cw.label} — ${cw.name}` : 'In progress';
+  } else {
+    document.getElementById('currentWeekLabel').textContent = '🎉 All 24 weeks complete!';
+  }
+
+  // Mark completed weeks
+  for (let gw = 0; gw < weeksCompleted; gw++) {
+    const mi = Math.floor(gw / 4);
+    const wi = gw % 4;
+
+    // Week tab — green checkmark
+    const tab = document.getElementById(`wtab_${mi}_${wi}`);
+    if (tab) tab.classList.add('done');
+
+    // Week panel — done banner + dim all days
+    const panel = document.getElementById(`wpanel_${mi}_${wi}`);
+    if (panel) {
+      panel.classList.add('completed');
+      // Mark all days in this week as done
+      const m = data[mi];
+      if (m) {
+        m.weeks[wi].days.forEach((d, di) => {
+          const row = document.getElementById(`day_${mi}_${wi}_${di}`);
+          if (row) {
+            row.classList.add('day-done');
+            const check = row.querySelector('.day-done-check');
+            if (check) check.style.display = 'inline';
+            // Close the body if open
+            const body = row.querySelector('.day-body');
+            if (body) body.classList.remove('open');
+          }
+        });
+      }
+    }
+
+    // If all 4 weeks of a month are done, mark the month card
+    if (wi === 3) {
+      const card = document.getElementById('card_' + data[mi]?.id);
+      if (card) card.classList.add('month-done');
+    }
+  }
+
+  // Auto-open the current active week tab
+  if (weeksCompleted < TOTAL_WEEKS) {
+    const cmi = Math.floor(currentWeekIndex / 4);
+    const cwi = currentWeekIndex % 4;
+    // Switch to current week tab in that month
+    document.querySelectorAll(`.week-tab[data-month="${cmi}"]`).forEach(b => b.classList.remove('active'));
+    document.querySelectorAll(`.week-panel[data-month="${cmi}"]`).forEach(p => p.classList.remove('visible'));
+    const activeTab = document.getElementById(`wtab_${cmi}_${cwi}`);
+    const activePanel = document.getElementById(`wpanel_${cmi}_${cwi}`);
+    if (activeTab) activeTab.classList.add('active');
+    if (activePanel) activePanel.classList.add('visible');
+  }
+}
+
+// ─── DATE INPUT ────────────────────────────────────────────────────────────
+const dateInput = document.getElementById('startDate');
+
+// Load saved date
+const savedDate = localStorage.getItem(STORAGE_KEY);
+if (savedDate) {
+  dateInput.value = savedDate;
+  applyProgress(savedDate);
+}
+
+// Save and apply on change
+dateInput.addEventListener('change', () => {
+  const val = dateInput.value;
+  if (val) {
+    localStorage.setItem(STORAGE_KEY, val);
+    // Clear existing done states before re-applying
+    document.querySelectorAll('.week-tab.done').forEach(el => el.classList.remove('done'));
+    document.querySelectorAll('.week-panel.completed').forEach(el => el.classList.remove('completed'));
+    document.querySelectorAll('.day-row.day-done').forEach(el => {
+      el.classList.remove('day-done');
+      const check = el.querySelector('.day-done-check');
+      if (check) check.style.display = 'none';
+    });
+    document.querySelectorAll('.month-card.month-done').forEach(el => el.classList.remove('month-done'));
+    applyProgress(val);
+  }
+});
+
+// ─── SCROLL PROGRESS ───────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  const pct = (window.scrollY / total) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+});
+</script>
+</body>
+</html>
